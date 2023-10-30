@@ -1,0 +1,26 @@
+name: Spark CI
+
+on:
+  push:
+    paths:
+      - 'Custom_folder/**'
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Build and Test
+      run: |
+        # Your build and test commands go here
+        # e.g., `sbt package` if you're using Scala and sbt
+      
+    - name: Upload artifact
+      # This step uploads the built JAR as a GitHub artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: spark-app
+        path: path_to_your_built_jar.jar
